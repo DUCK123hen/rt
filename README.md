@@ -532,54 +532,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Retro Game Music</title>
-</head>
-<body>
-  <button onclick="playTune()">▶ Play Music</button>
-  <button onclick="stopTune()">⏹ Stop</button>
+ 
 
-  <script>
-    let ctx, oscList = [], gainNode;
-
-    const melody = [
-      { note: 440, duration: 0.3 }, // A4
-      { note: 660, duration: 0.3 }, // E5
-      { note: 550, duration: 0.3 }, // C#5
-      { note: 880, duration: 0.6 }, // A5
-    ];
-
-    function playTune() {
-      if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
-      gainNode = ctx.createGain();
-      gainNode.gain.value = 0.1; // volume
-      gainNode.connect(ctx.destination);
-
-      let time = ctx.currentTime;
-
-      // Loop melody forever
-      for (let i = 0; i < 100; i++) {
-        melody.forEach(m => {
-          let osc = ctx.createOscillator();
-          osc.type = "square"; // 8-bit sound
-          osc.frequency.value = m.note;
-          osc.connect(gainNode);
-          osc.start(time);
-          osc.stop(time + m.duration);
-          time += m.duration;
-          oscList.push(osc);
-        });
-      }
-    }
-
-    function stopTune() {
-      oscList.forEach(o => o.disconnect());
-      oscList = [];
-    }
-  </script>
-</body>
-</html>
-
-})();
+})()
 </script>
 </body>
 </html>
