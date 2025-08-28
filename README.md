@@ -533,6 +533,16 @@
 <head>
   <meta charset="UTF-8">
  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+<script>
+  var music = new Howl({
+    src: ['retro-song.mp3'],
+    loop: true,
+    volume: 0.5
+  });
+
+  music.play();
+</script>
 
 })()
 </script>
